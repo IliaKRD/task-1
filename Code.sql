@@ -11,7 +11,7 @@ Engine = Log();
 INSERT INTO ILIA.TEST
 SELECT
     toInt32(floor(randNormal(22, 2))) AS a,
-    substring(randString(10), 1, 10) AS b,
+    substring(upper(hex(reinterpretAsString(rand() % 256))), 1, 10) AS b,
     toEnum('a', 'b', 'c')[rand() % 3 + 1] AS c
 FROM numbers(10000);
 
